@@ -10,7 +10,7 @@ public class MoodAnalyser {
         this.msg = msg;
     }
 
-    public String analyseMood() {
+    public String analyseMood() throws MoodAnalysisException {
         try {
             if(msg.contains("sad")){
                 return "Sad";
@@ -18,7 +18,7 @@ public class MoodAnalyser {
             return "Happy";
         }
         catch (NullPointerException e){
-            return "Message is empty.";
+            throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL, "Message is Empty.");
         }
     }
 
